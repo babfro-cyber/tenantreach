@@ -1,120 +1,47 @@
 import { FormEvent, useState } from "react";
 
-const campaignSummary = [
-  "Targeted weekday outreach to relevant businesses",
-  "No success fee",
-  "No long-term commitment",
+const serviceCards = [
+  {
+    title: "Find likely-fit businesses",
+    copy: "Identify companies that may have a practical reason to use the space.",
+  },
+  {
+    title: "Draft tailored outreach",
+    copy: "Write a short message around the property and likely business need.",
+  },
+  {
+    title: "Get approval before sending",
+    copy: "You approve the target profile and message before outreach starts.",
+  },
+  {
+    title: "Follow up and track responses",
+    copy: "Follow-ups, replies, and activity are tracked in a simple report.",
+  },
 ];
 
 const included = [
   "Tenant profile definition",
   "Prospect research",
   "Contact finding",
-  "Outreach message draft",
+  "Tailored outreach draft",
   "Approved outreach",
   "Follow-ups",
   "Reply tracking",
   "Weekly progress report",
 ];
 
-const bestFit = [
-  "Warehouses",
-  "Industrial units",
-  "Trade / showroom spaces",
-  "Logistics and depot-style properties",
-  "Light industrial properties",
-];
-
-const notIdeal = [
-  "Residential property",
-  "Premium CBD office towers",
-  "Major institutional assets",
-  "Retail shops relying mainly on foot traffic",
-];
-
-const steps = [
-  {
-    title: "Property brief",
-    copy: "You share the listing, location, property type, and the kind of tenant you want.",
-  },
-  {
-    title: "Market-led tenant research",
-    copy: "TenantReach looks for businesses that may have a real reason to move, expand, open locally, improve logistics, or need space like yours. Research can include public business news, local updates, hiring signals, online ads, directories, Google keyword searches, and other public indicators of activity or growth.",
-  },
-  {
-    title: "Tailored outreach",
-    copy: "Each message is written around the property and the likely business need, not a generic leasing blast.",
-  },
-  {
-    title: "Follow-up and tracking",
-    copy: "Replies, follow-ups, and interested leads are tracked clearly. You get visibility of the outreach activity and responses.",
-  },
-];
-
-const timeline = [
-  {
-    label: "Day 1",
-    title: "Property brief",
-    copy: "You share the listing, location, property type, and target tenant profile.",
-  },
-  {
-    label: "Day 2",
-    title: "Target profile and outreach draft",
-    copy: "TenantReach prepares the target logic and first outreach message for approval.",
-  },
-  {
-    label: "Day 3-4",
-    title: "First outreach begins",
-    copy: "Once approved, targeted outreach starts with relevant businesses.",
-  },
-  {
-    label: "Weekly",
-    title: "Progress update",
-    copy: "You receive a simple summary showing researched businesses, outreach activity, replies, and next steps.",
-  },
-];
-
 const faqs = [
   {
-    question: "Am I committing to payment when I join early access?",
-    answer:
-      "No. Submitting your details is free. If the property looks like a fit, I’ll send a proposed campaign plan before any paid campaign starts.",
-  },
-  {
-    question: "What do I get for $199 per week?",
-    answer:
-      "Tenant profile definition, prospect research, contact finding, outreach message drafting, approved outreach, follow-ups, reply tracking, and a weekly progress report.",
-  },
-  {
-    question: "How quickly can a campaign start?",
-    answer:
-      "Usually within a few days once the property brief, target profile, and outreach message are approved.",
-  },
-  {
     question: "Do you replace my leasing agent?",
-    answer: "No. TenantReach is an additional outbound layer. Agents still play an important role.",
+    answer: "No. TenantReach adds an outbound layer alongside the existing listing campaign.",
   },
   {
     question: "Do you guarantee a tenant?",
-    answer: "No. The goal is to create additional tenant conversations, not guarantee a lease.",
+    answer: "No. The goal is to create more relevant tenant conversations, not guarantee a lease.",
   },
   {
-    question: "Will you contact businesses without approval?",
+    question: "Will anything be sent without approval?",
     answer: "No. You approve the target profile and outreach message before anything is sent.",
-  },
-  {
-    question: "How many businesses do you contact?",
-    answer:
-      "We prioritise relevance over volume. For a typical 2-week early campaign, the working range is usually 25-50 researched businesses, with targeted outreach and follow-ups tracked in a simple report.",
-  },
-  {
-    question: "Who sends the emails?",
-    answer:
-      "For early campaigns, the setup is agreed before launch. Outreach can be sent from a dedicated campaign inbox or an approved client email setup. You’ll have visibility of messages, replies, and follow-ups.",
-  },
-  {
-    question: "What properties work best?",
-    answer: "Industrial, warehouse, logistics, trade/showroom and light industrial properties.",
   },
 ];
 
@@ -169,108 +96,45 @@ function App() {
         <div className="container hero-grid">
           <div className="hero-copy">
             <p className="brand-name">TenantReach</p>
-            <p className="eyebrow">
-              Targeted outbound tenant sourcing for vacant commercial and industrial properties.
-            </p>
             <h1>Find tenant leads beyond listing enquiries</h1>
             <p className="hero-subtitle">
-              TenantReach identifies likely-fit businesses, contacts them directly, follows up,
-              and tracks the pipeline.
+              Targeted outbound tenant sourcing for vacant commercial and industrial properties.
             </p>
             <a className="button primary" href="#early-access">
-              Join the early access list
+              Submit your property
             </a>
-            <p className="early-access-note">
-              Submit your property. If it looks like a fit, I&apos;ll send you a proposed campaign
-              plan before you pay. No payment is required to join early access.
-            </p>
-            <p className="trust-line">
-              You approve the target profile and outreach message before anything is sent.
+            <p className="reassurance">
+              No payment required to submit. If it&apos;s a fit, I&apos;ll send a campaign proposal
+              first.
             </p>
           </div>
 
-          <aside className="hero-panel" aria-label="Early access campaign summary">
-            <div className="panel-header">
-              <p className="panel-label">Early access campaign</p>
-              <div className="panel-price">
-                <strong>$199</strong>
-                <span>per week</span>
-              </div>
-              <p className="panel-note">Minimum 2 weeks. Cancel anytime after that.</p>
+          <aside className="price-card" aria-label="TenantReach pricing">
+            <p className="eyebrow">MVP campaign</p>
+            <div className="price-line">
+              <strong>$199</strong>
+              <span>/week</span>
             </div>
-            <ul className="summary-list">
-              {campaignSummary.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
+            <ul className="plain-list">
+              <li>Minimum 2 weeks</li>
+              <li>No success fee</li>
+              <li>Campaign starts only after review and approval</li>
             </ul>
-            <div className="panel-inclusions">
-              <h3>What&apos;s included</h3>
-              <ul className="compact-check-list">
-                {included.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <p>
-                For a typical 2-week early campaign, the working range is usually 25-50 researched
-                businesses, with targeted outreach and follow-ups tracked in a simple report.
-              </p>
-            </div>
           </aside>
-        </div>
-      </section>
-
-      <section className="section muted">
-        <div className="container credibility-card">
-          <div>
-            <p className="eyebrow">Why TenantReach exists</p>
-            <h2>Built from a real leasing problem</h2>
-          </div>
-          <div className="credibility-copy">
-            <p>
-              Vacant commercial property becomes expensive quickly when enquiry slows down. Listing
-              portals and agent networks are useful, but in slower markets they can leave landlords
-              waiting.
-            </p>
-            <p>
-              I first built this while trying to lease one of my own commercial properties. Instead
-              of waiting only for inbound enquiries, I researched relevant businesses, contacted
-              them directly, followed up, and tracked the pipeline. I recently secured a tenant,
-              and this outbound layer helped create more activity around the property.
-            </p>
-          </div>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
           <div className="section-heading">
-            <p className="eyebrow">How it works</p>
-            <h2>A focused outbound campaign alongside your existing leasing activity</h2>
+            <p className="eyebrow">What TenantReach does</p>
+            <h2>A simple outbound layer for slow listings</h2>
           </div>
-          <div className="step-grid">
-            {steps.map((step, index) => (
-              <article className="card step-card" key={step.title}>
-                <span className="step-number">{index + 1}</span>
-                <h3>{step.title}</h3>
-                <p>{step.copy}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section timeline-section">
-        <div className="container">
-          <div className="section-heading">
-            <p className="eyebrow">Typical campaign timeline</p>
-            <h2>From brief to first outreach in a few clear steps</h2>
-          </div>
-          <div className="timeline-grid">
-            {timeline.map((item) => (
-              <article className="timeline-item" key={item.label}>
-                <span>{item.label}</span>
-                <h3>{item.title}</h3>
-                <p>{item.copy}</p>
+          <div className="card-grid four">
+            {serviceCards.map((card) => (
+              <article className="card" key={card.title}>
+                <h3>{card.title}</h3>
+                <p>{card.copy}</p>
               </article>
             ))}
           </div>
@@ -278,14 +142,23 @@ function App() {
       </section>
 
       <section className="section muted">
+        <div className="container note-card">
+          <p className="eyebrow">Built from a real leasing problem</p>
+          <p>
+            I first built this while trying to lease one of my own commercial properties. Instead of
+            relying only on listing enquiries, I used public business signals and
+            technology-assisted research to identify likely-fit businesses, reach out directly,
+            follow up, and track the pipeline. That outbound layer helped create more tenant
+            conversations.
+          </p>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="container">
           <div className="section-heading">
             <p className="eyebrow">Example campaign</p>
-            <h2>What a targeted tenant search can look like.</h2>
-            <p className="example-note">
-              Example only &mdash; target selection and outreach are tailored to each property and
-              approved before anything is sent. The business example below is fictional.
-            </p>
+            <h2>What a targeted tenant search can look like</h2>
           </div>
 
           <div className="example-grid">
@@ -296,27 +169,18 @@ function App() {
               </div>
               <h3>Example: 380 sqm industrial unit in Brisbane</h3>
               <p>
-                High-clearance warehouse, roller door access, 3-phase power, small office, and
-                good access to major arterial roads.
+                High-clearance warehouse, roller door access, 3-phase power, small office, and good
+                access to major arterial roads.
               </p>
             </article>
 
             <article className="card example-card">
               <span className="example-label">Potential tenant logic</span>
-              <h3>Potential tenant profile</h3>
+              <h3>Trade or service businesses needing operational space</h3>
               <p>
-                Trade services, equipment hire, logistics support, building supplies, light
-                manufacturing, or businesses needing storage plus local distribution.
-              </p>
-              <h3>Example target</h3>
-              <p>
-                A growing building maintenance business servicing Brisbane&apos;s inner north and
-                trade customers across nearby suburbs.
-              </p>
-              <p>
-                <strong>Why they may be relevant:</strong> They recently advertised for two field
-                staff, operate across the local area, and appear to need storage, parking, or
-                operational space close to their customer base.
+                A growing building maintenance business may be relevant if it is hiring field
+                staff, servicing the local area, and needs storage, parking, or warehouse space near
+                customers.
               </p>
             </article>
 
@@ -335,9 +199,8 @@ function App() {
                   Brisbane&apos;s inner north.
                 </p>
                 <p>
-                  I&apos;m helping with a high-clearance industrial unit in Brisbane that may
-                  suit a trade or service business needing more warehouse, storage, or operational
-                  space.
+                  I&apos;m helping with a high-clearance industrial unit in Brisbane that may suit a
+                  trade or service business needing more warehouse, storage, or operational space.
                 </p>
                 <p>
                   It is around 380 sqm, with roller door access, 3-phase power, and good access to
@@ -347,49 +210,40 @@ function App() {
                   Would it be worth sending through the listing in case it&apos;s relevant now or
                   later this year?
                 </p>
-                <p>Regards,<br />[Name]</p>
+                <p>
+                  Regards,
+                  <br />
+                  [Name]
+                </p>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <div className="section-heading">
-            <p className="eyebrow">Who it is for</p>
-            <h2>Best for properties with a clear business use</h2>
-            <p className="section-support">
-              For agents, TenantReach can support slow listings by adding a targeted outbound layer
-              while you remain the leasing lead.
+      <section className="section muted">
+        <div className="container included-layout">
+          <div>
+            <p className="eyebrow">What&apos;s included</p>
+            <h2>$199/week. Minimum 2 weeks. No success fee.</h2>
+            <p className="expectation">
+              A typical 2-week early campaign usually covers 25-50 researched businesses, depending
+              on the property and market.
             </p>
           </div>
-          <div className="fit-grid">
-            <div className="fit-card positive">
-              <h3>Best suited to</h3>
-              <ul>
-                {bestFit.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="fit-card">
-              <h3>Not ideal for</h3>
-              <ul>
-                {notIdeal.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <ul className="check-list">
+            {included.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container faq-grid">
+      <section className="section faq-section">
+        <div className="container faq-layout">
           <div>
             <p className="eyebrow">FAQ</p>
-            <h2>Common questions</h2>
+            <h2>Quick answers</h2>
           </div>
           <div className="faq-list">
             {faqs.map((faq) => (
@@ -405,15 +259,11 @@ function App() {
       <section className="section form-section" id="early-access">
         <div className="container form-layout">
           <div>
-            <p className="eyebrow">Early access</p>
-            <h2>Join the early access list</h2>
+            <p className="eyebrow">Submit your property</p>
+            <h2>Submit your property</h2>
             <p className="large-copy">
-              Leave your email and I&apos;ll come back to you if the property looks like a good fit
-              for an early campaign.
-            </p>
-            <p className="form-helper">
-              No payment is required to join early access. If it looks like a fit, I&apos;ll come
-              back with a proposed campaign plan.
+              No payment is required to submit. If the property looks like a fit, I&apos;ll send you
+              a proposed 2-week campaign plan before anything starts.
             </p>
           </div>
 
@@ -429,9 +279,7 @@ function App() {
             <label>
               Are you a landlord or agent?
               <select name="role" defaultValue="">
-                <option value="">
-                  Select one
-                </option>
+                <option value="">Select one</option>
                 <option>Landlord</option>
                 <option>Agent</option>
                 <option>Owner representative</option>
@@ -446,12 +294,12 @@ function App() {
               <input name="listingLink" type="url" placeholder="https://" />
             </label>
             <button className="button primary full-span" type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Sending..." : "Join early access"}
+              {isSubmitting ? "Sending..." : "Submit property"}
             </button>
             {submitted && (
               <p className="confirmation full-span" role="status">
-                Thanks &mdash; I&apos;ll review this and come back to you if it looks like a good fit
-                for TenantReach.
+                Thanks - I&apos;ll review this and come back to you if it looks like a good fit for
+                TenantReach.
               </p>
             )}
             {submitError && (
