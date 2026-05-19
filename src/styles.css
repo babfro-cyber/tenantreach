@@ -161,6 +161,15 @@ p {
   font-weight: 750;
 }
 
+.early-access-note {
+  max-width: 680px;
+  margin: 18px 0 0;
+  border-left: 3px solid #287063;
+  padding-left: 14px;
+  color: #26322e;
+  font-weight: 700;
+}
+
 .credibility-line {
   margin: 10px 0 0;
   color: #48534f;
@@ -171,8 +180,7 @@ p {
 .card,
 .fit-card,
 details,
-.lead-form,
-.pricing-card {
+.lead-form {
   border: 1px solid #d8d5ca;
   border-radius: 8px;
   background: #ffffff;
@@ -238,9 +246,27 @@ details,
   margin-top: 24px;
 }
 
+.panel-inclusions {
+  margin-top: 24px;
+  border-top: 1px solid #e7e3d9;
+  padding-top: 22px;
+}
+
+.panel-inclusions h3 {
+  margin-bottom: 14px;
+}
+
+.panel-inclusions p {
+  margin: 18px 0 0;
+  color: #3f4945;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 .summary-list li,
 .check-list li,
-.fit-card li {
+.fit-card li,
+.compact-check-list li {
   position: relative;
   padding-left: 28px;
   color: #39433f;
@@ -252,7 +278,8 @@ details,
 
 .summary-list li::before,
 .check-list li::before,
-.fit-card li::before {
+.fit-card li::before,
+.compact-check-list li::before {
   position: absolute;
   top: 0.5em;
   left: 0;
@@ -261,6 +288,20 @@ details,
   border-radius: 2px;
   background: #287063;
   content: "";
+}
+
+.compact-check-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.compact-check-list li {
+  font-size: 0.9rem;
+  line-height: 1.35;
 }
 
 .section {
@@ -313,6 +354,14 @@ details,
   margin-bottom: 34px;
 }
 
+.section-support {
+  max-width: 740px;
+  margin: -2px 0 0;
+  color: #303b37;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
 .step-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -342,6 +391,39 @@ details,
 }
 
 .card p {
+  margin-bottom: 0;
+}
+
+.timeline-section {
+  background: #fbfaf6;
+}
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.timeline-item {
+  border-top: 3px solid #287063;
+  padding: 18px 18px 0 0;
+}
+
+.timeline-item span {
+  display: inline-flex;
+  margin-bottom: 10px;
+  color: #287063;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.timeline-item h3 {
+  margin-bottom: 8px;
+}
+
+.timeline-item p {
   margin-bottom: 0;
 }
 
@@ -472,56 +554,6 @@ details,
   background: #fbfdfb;
 }
 
-.pricing-section {
-  background: #fbfaf6;
-}
-
-.pricing-card {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 24px;
-  align-items: center;
-  padding: 34px;
-}
-
-.pricing-card h2 {
-  margin-bottom: 10px;
-}
-
-.pricing-card p {
-  margin-bottom: 0;
-}
-
-.pricing-trust {
-  grid-column: 1 / -1;
-  border-top: 1px solid #e7e3d9;
-  padding-top: 18px;
-  color: #26322e;
-  font-weight: 750;
-}
-
-.pricing-included {
-  grid-column: 1 / -1;
-  border-top: 1px solid #e7e3d9;
-  padding-top: 20px;
-}
-
-.pricing-included h3 {
-  margin-bottom: 14px;
-}
-
-.compact-list {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-
-.pricing-disclaimer {
-  grid-column: 1 / -1;
-  border-top: 1px solid #e7e3d9;
-  padding-top: 18px;
-  color: #3f4945;
-  font-size: 0.98rem;
-}
-
 .faq-list {
   display: grid;
   gap: 14px;
@@ -546,6 +578,13 @@ details,
   border-bottom: 0;
   padding-bottom: 98px;
   background: #f6f4ee;
+}
+
+.form-helper {
+  max-width: 680px;
+  margin: 18px 0 0;
+  color: #26322e;
+  font-weight: 750;
 }
 
 .lead-form {
@@ -631,6 +670,10 @@ textarea:focus {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .timeline-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .example-grid {
     grid-template-columns: 1fr;
   }
@@ -658,18 +701,17 @@ textarea:focus {
   }
 
   .step-grid,
+  .timeline-grid,
   .example-grid,
   .fit-grid,
   .check-list,
   .lead-form,
-  .pricing-card,
-  .compact-list {
+  .compact-check-list {
     grid-template-columns: 1fr;
   }
 
   .hero-panel,
   .checklist-card,
-  .pricing-card,
   .lead-form,
   .story-card,
   .credibility-card {

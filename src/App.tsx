@@ -2,9 +2,19 @@ import { FormEvent, useState } from "react";
 
 const campaignSummary = [
   "Targeted weekday outreach to relevant businesses",
-  "Follow-ups included",
-  "Weekly progress report",
   "No success fee",
+  "No long-term commitment",
+];
+
+const included = [
+  "Tenant profile definition",
+  "Prospect research",
+  "Contact finding",
+  "Outreach message draft",
+  "Approved outreach",
+  "Follow-ups",
+  "Reply tracking",
+  "Weekly progress report",
 ];
 
 const bestFit = [
@@ -41,7 +51,45 @@ const steps = [
   },
 ];
 
+const timeline = [
+  {
+    label: "Day 1",
+    title: "Property brief",
+    copy: "You share the listing, location, property type, and target tenant profile.",
+  },
+  {
+    label: "Day 2",
+    title: "Target profile and outreach draft",
+    copy: "TenantReach prepares the target logic and first outreach message for approval.",
+  },
+  {
+    label: "Day 3-4",
+    title: "First outreach begins",
+    copy: "Once approved, targeted outreach starts with relevant businesses.",
+  },
+  {
+    label: "Weekly",
+    title: "Progress update",
+    copy: "You receive a simple summary showing researched businesses, outreach activity, replies, and next steps.",
+  },
+];
+
 const faqs = [
+  {
+    question: "Am I committing to payment when I join early access?",
+    answer:
+      "No. Submitting your details is free. If the property looks like a fit, I’ll send a proposed campaign plan before any paid campaign starts.",
+  },
+  {
+    question: "What do I get for $199 per week?",
+    answer:
+      "Tenant profile definition, prospect research, contact finding, outreach message drafting, approved outreach, follow-ups, reply tracking, and a weekly progress report.",
+  },
+  {
+    question: "How quickly can a campaign start?",
+    answer:
+      "Usually within a few days once the property brief, target profile, and outreach message are approved.",
+  },
   {
     question: "Do you replace my leasing agent?",
     answer: "No. TenantReach is an additional outbound layer. Agents still play an important role.",
@@ -57,7 +105,7 @@ const faqs = [
   {
     question: "How many businesses do you contact?",
     answer:
-      "We prioritise relevance over volume. Early campaigns start with a small daily batch of targeted prospects so outreach stays property-specific and easy to track.",
+      "We prioritise relevance over volume. For a typical 2-week early campaign, the working range is usually 25-50 researched businesses, with targeted outreach and follow-ups tracked in a simple report.",
   },
   {
     question: "Who sends the emails?",
@@ -132,6 +180,10 @@ function App() {
             <a className="button primary" href="#early-access">
               Join the early access list
             </a>
+            <p className="early-access-note">
+              Submit your property. If it looks like a fit, I&apos;ll send you a proposed campaign
+              plan before you pay. No payment is required to join early access.
+            </p>
             <p className="trust-line">
               You approve the target profile and outreach message before anything is sent.
             </p>
@@ -151,6 +203,18 @@ function App() {
                 <li key={item}>{item}</li>
               ))}
             </ul>
+            <div className="panel-inclusions">
+              <h3>What&apos;s included</h3>
+              <ul className="compact-check-list">
+                {included.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <p>
+                For a typical 2-week early campaign, the working range is usually 25-50 researched
+                businesses, with targeted outreach and follow-ups tracked in a simple report.
+              </p>
+            </div>
           </aside>
         </div>
       </section>
@@ -189,6 +253,24 @@ function App() {
                 <span className="step-number">{index + 1}</span>
                 <h3>{step.title}</h3>
                 <p>{step.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section timeline-section">
+        <div className="container">
+          <div className="section-heading">
+            <p className="eyebrow">Typical campaign timeline</p>
+            <h2>From brief to first outreach in a few clear steps</h2>
+          </div>
+          <div className="timeline-grid">
+            {timeline.map((item) => (
+              <article className="timeline-item" key={item.label}>
+                <span>{item.label}</span>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
               </article>
             ))}
           </div>
@@ -277,6 +359,10 @@ function App() {
           <div className="section-heading">
             <p className="eyebrow">Who it is for</p>
             <h2>Best for properties with a clear business use</h2>
+            <p className="section-support">
+              For agents, TenantReach can support slow listings by adding a targeted outbound layer
+              while you remain the leasing lead.
+            </p>
           </div>
           <div className="fit-grid">
             <div className="fit-card positive">
@@ -324,6 +410,10 @@ function App() {
             <p className="large-copy">
               Leave your email and I&apos;ll come back to you if the property looks like a good fit
               for an early campaign.
+            </p>
+            <p className="form-helper">
+              No payment is required to join early access. If it looks like a fit, I&apos;ll come
+              back with a proposed campaign plan.
             </p>
           </div>
 
