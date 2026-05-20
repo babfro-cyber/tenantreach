@@ -11,7 +11,7 @@ const serviceCards = [
   },
   {
     title: "Get approval before sending",
-    copy: "You approve the target profile and message before outreach starts.",
+    copy: "You approve the target profile and outreach message before automatic outreach starts.",
   },
   {
     title: "Follow up and track responses",
@@ -41,7 +41,8 @@ const faqs = [
   },
   {
     question: "Will anything be sent without approval?",
-    answer: "No. You approve the target profile and outreach message before anything is sent.",
+    answer:
+      "No. You approve the target profile and outreach message before automatic outreach starts.",
   },
 ];
 
@@ -110,7 +111,7 @@ function App() {
           </div>
 
           <aside className="price-card" aria-label="TenantReach pricing">
-            <p className="eyebrow">MVP campaign</p>
+            <p className="eyebrow">Campaign</p>
             <div className="price-line">
               <strong>$199</strong>
               <span>/week</span>
@@ -227,8 +228,12 @@ function App() {
             <p className="eyebrow">What&apos;s included</p>
             <h2>$199/week. Minimum 2 weeks. No success fee.</h2>
             <p className="expectation">
-              A typical 2-week early campaign usually covers 25-50 researched businesses, depending
-              on the property and market.
+              A typical 2-week campaign usually reaches 50–100 relevant businesses, depending on
+              the property, market, and available target pool.
+            </p>
+            <p className="expectation secondary">
+              We prioritise fit over volume, so the final number may vary by property type and
+              location.
             </p>
           </div>
           <ul className="check-list">
