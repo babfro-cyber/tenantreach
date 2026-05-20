@@ -367,6 +367,11 @@ p {
   font-weight: 700;
 }
 
+.expectation.secondary {
+  margin-top: 12px;
+  font-weight: 650;
+}
+
 .check-list {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   border: 1px solid #d8d5ca;
